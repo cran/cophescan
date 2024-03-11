@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -8,6 +8,7 @@ knitr::opts_chunk$set(
 ## ----setup, message=FALSE, warning=FALSE--------------------------------------
 library(cophescan)
 library(dplyr)
+library(ggplot2)
 
 ## -----------------------------------------------------------------------------
 data("cophe_multi_trait_data")
@@ -34,38 +35,63 @@ res.multi.lbf.df = bind_rows(res.multi.lbf)
 head(res.multi.lbf.df)
 
 ## ----warning=F, message=F, fig.width = 8, fig.height=8, out.width = "75%",  fig.ncol = 3, fig.align = "center"----
-# covar=FALSE
-## Set covar to TRUE to include covariates
-covar=TRUE
-covar_vec = cophe_multi_trait_data$covar_vec
-cophe.hier.res <- run_metrop_priors(res.multi.lbf.df, avg_posterior=TRUE, avg_pik = TRUE, covar_vec = covar_vec, covar = covar, nits = 30000)
+covar=FALSE
+covar_vec=rep(1, nrow(res.multi.lbf.df))
+## Set covar to TRUE to include covariates, uncomment the following 2 lines 
+# covar=TRUE
+# covar_vec = cophe_multi_trait_data$covar_vec
+cophe.hier.res <- run_metrop_priors(res.multi.lbf.df, avg_posterior=TRUE, avg_pik = TRUE, covar_vec = covar_vec, covar = covar, nits = 50000, thin = 5)
 names(cophe.hier.res)
 
-## ----mcmcDiagnostics, warning=F, message=F, fig.width=5, fig.height=5, out.width="50%", fig.align="center"----
+## ----message=FALSE------------------------------------------------------------
+cophe.hier.res.chain.list <- lapply(1:4, function(x) 
+  run_metrop_priors(res.multi.lbf.df, avg_posterior=TRUE, avg_pik = TRUE, 
+                    covar_vec = covar_vec, covar = covar, nits = 50000, thin = 5))
 
-loglik <- cophe.hier.res$ll
-parameters <- cophe.hier.res$parameters
-col <- rgb(red = 0.4, green = 0.7, blue = 0.5, alpha = 0.8)
-### store user parameters
-old_par = par(no.readonly = TRUE)
+## ----mcmcDiagnostics, warning=FALSE, message=FALSE, fig.width=5, fig.height=5, out.width="80%", fig.align="center"----
+# Store user parameters
+old_par <- par(no.readonly = TRUE)
 
-## plot diagnostics
-par(mfrow=c(2,2))
-plot(seq_along(loglik), loglik, main="loglik",type="l", col=col, ylab = "ll", xlab="")
-plot(seq_len(ncol(parameters)), parameters[1,], main="alpha",type="l", col=col, ylab = "alpha", xlab="")
-plot(seq_len(ncol(parameters)), parameters[2,], main="beta",type="l", col=col, ylab = "beta", xlab="")
-if (covar)
-  plot(seq_len(ncol(parameters)), parameters[3,], main="gamma",type="l", col=col, ylab = "gamma", xlab="")
+# chain_colors <- c("#e63946c4", "#f1faee", "#a8dadc", "#457b9d" )
+chain_colors <- c("#f4f1de", "#e07a5fb2", "#3d405bb2", "#81b29aa6")
 
-### reset user parameters
+layout(matrix(c(1, 2, 3, 4, 5, 5), ncol=2, byrow = TRUE), respect = TRUE, 
+       heights = c(0.9, 0.9, 0.1))
+
+
+matplot(sapply(cophe.hier.res.chain.list, function(x) x$ll), type = "l", 
+        col = chain_colors, 
+     main ="loglik", ylab = "ll", xlab = "Iteration", lty = 1)
+
+y_ax <- c("alpha", "beta", "gamma")
+num_pars <- ifelse(covar, 3, 2) 
+for (idx in 1:num_pars) {
+    matplot(sapply(cophe.hier.res.chain.list, function(x) x$parameters[idx, ]),
+        type = "l", col = chain_colors,
+        main = paste(y_ax[idx]), ylab = y_ax[idx], xlab = "Iteration", lty = 1
+    )
+}
+
+if (!covar) {
+    plot(1, type = "n", axes = FALSE, xlab = "", ylab = "")
+}
+
+par(mar=c(0, 0, 0, 0))
+plot(1, type = "n", axes = FALSE, xlab = "", ylab = "")
+legend("top", legend = paste("Chain", 1:4), col = chain_colors, lty = 1, lwd = 2, 
+       horiz = TRUE, bty = "n")
+
+# Reset user parameters
 par(old_par)
 
+
 ## -----------------------------------------------------------------------------
-res.post.prob = cbind(cophe.hier.res$avg.posterior, cophe.hier.res$data)
+res.post.prob = cbind(cophe.hier.res.chain.list[[1]]$avg.posterior, cophe.hier.res$data)
 
 ## -----------------------------------------------------------------------------
 res.hier.predict <- cophe.hyp.predict(as.data.frame(res.post.prob ))
-col_disp <- c( "PP.Hn", "PP.Ha", "PP.Hc", "nsnps", "querysnp", "querytrait", "typeBF",  "grp", "cophe.hyp.call")
+col_disp <- c( "PP.Hn", "PP.Ha", "PP.Hc", "nsnps", "querysnp", "querytrait",
+               "typeBF",  "grp", "cophe.hyp.call")
 knitr::kable(res.hier.predict[, col_disp], row.names = FALSE, digits=3)
 
 ## ----cophePlots, message=FALSE------------------------------------------------
@@ -74,10 +100,11 @@ res.plots = cophe_plot(res.hier.predict, traits.dat = cophe_multi_trait_data$sum
 # if (!require(ggpubr)) {
   # install.packages("ggpubr") 
 # }
-# ggpubr::ggarrange(res.plots$pval, res.plots$ppHa, res.plots$ppHc, ncol = 2, nrow = 2)
+# ggpubr::ggarrange(res.plots$pval, res.plots$ppHa, res.plots$ppHc, ncol = 2, 
+#                 nrow = 2)
 
-## ---- warning=FALSE, message=FALSE, echo=FALSE, out.width = "50%"-------------
-res.plots$pval
-res.plots$ppHa
-res.plots$ppHc
+## ----warning=FALSE, message=FALSE, echo=FALSE, out.width = "40%"--------------
+res.plots$pval + theme(legend.position="bottom")
+res.plots$ppHa + theme(legend.position="bottom")
+res.plots$ppHc + theme(legend.position="bottom")
 

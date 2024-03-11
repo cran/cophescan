@@ -1,4 +1,4 @@
-## ---- include=FALSE-----------------------------------------------------------
+## ----include=FALSE------------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -31,9 +31,12 @@ summary(res.single)
 res.single.predict <- cophe.hyp.predict(res.single)
 (paste0('The predicted hypothesis is: ', res.single.predict$cophe.hyp.call, ' [PP.Hc =', round(res.single.predict$PP.Hc,3), ']' ))
 
-## ----fig.width = 4, fig.height=4, fig.align = "center"------------------------
+## ----fig.width = 4, fig.height=4, fig.align = "center", message=FALSE---------
 # Run cophescan with susie (multiple variants) by providing the snpid of the known causal variant for trait 1 = querysnpid
 querytrait$LD <- LD
 res.susie <- cophe.susie(querytrait, querysnpid = querysnpid, querytrait='Trait_1')
 summary(res.susie)
+
+res.susie.predict <- cophe.hyp.predict(res.susie)
+(paste0('The predicted hypothesis is: ', res.susie.predict$cophe.hyp.call, ' [PP.Hc =', round(res.susie.predict$PP.Hc,3), ']' ))
 
