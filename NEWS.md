@@ -1,10 +1,11 @@
+## cophescan 1.4.1
 
-
+-   Corrected cophe.susie input to accept only query trait datasets.
 
 ## cophescan 1.4.0
 
 -   Set default values for fixed priors (pa and pc) in cophe.single and cophe.susie
--   Updated diagnostics of mcmc chains in vignettes
+-   Updated diagnostics of MCMC chains in vignettes
 -   Fixed prior information added in vignette
 -   Submitted to CRAN
 

@@ -1,6 +1,6 @@
 Package: cophescan
 Title: Adaptation of the Coloc Method for PheWAS
-Version: 1.4.0
+Version: 1.4.1
 Authors@R: c(person("Ichcha", "Manipur", role=c("aut","cre"),
     email = "im504@cam.ac.uk"),
     person("Chris", "Wallace", role=c("aut")))
@@ -28,8 +28,8 @@ LinkingTo: Rcpp, RcppArmadillo
 Config/testthat/edition: 3
 ByteCompile: true
 NeedsCompilation: yes
-Packaged: 2024-03-11 19:48:22 UTC; ichcha
+Packaged: 2024-06-11 14:52:08 UTC; ichcha
 Author: Ichcha Manipur [aut, cre],
   Chris Wallace [aut]
 Repository: CRAN
-Date/Publication: 2024-03-11 20:00:02 UTC
+Date/Publication: 2024-06-11 15:20:20 UTC
