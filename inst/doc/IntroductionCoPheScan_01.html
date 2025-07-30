@@ -12,7 +12,7 @@
 
 <meta name="author" content="Ichcha Manipur" />
 
-<meta name="date" content="2024-06-11" />
+<meta name="date" content="2025-07-30" />
 
 <title>Introduction to CoPheScan</title>
 
@@ -62,7 +62,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -340,7 +340,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Introduction to CoPheScan</h1>
 <h4 class="author">Ichcha Manipur</h4>
-<h4 class="date">2024-06-11</h4>
+<h4 class="date">2025-07-30</h4>
 
 
 
@@ -370,13 +370,13 @@ of dataset.</p>
 <p>First, choosing the method for Bayes factor computation:</p>
 <table>
 <colgroup>
-<col width="9%" />
-<col width="30%" />
-<col width="34%" />
+<col width="21%" />
 <col width="26%" />
+<col width="30%" />
+<col width="21%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th></th>
 <th>Single causal variant</th>
 <th>Multiple causal variants</th>
@@ -384,19 +384,19 @@ of dataset.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>ABF</td>
 <td>✔</td>
 <td>x</td>
 <td>No</td>
 </tr>
-<tr class="even">
+<tr>
 <td>SuSIE</td>
 <td>✔</td>
 <td>✔</td>
 <td>Yes</td>
 </tr>
-<tr class="odd">
+<tr>
 <td></td>
 <td></td>
 <td></td>
@@ -411,24 +411,24 @@ multiple causal variants in the tested region.</p>
 specify priors :</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th></th>
 <th>Dataset</th>
 <th>Inclusion of covariates</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Fixed priors</td>
 <td>Small</td>
 <td>-</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Hierarchical priors</td>
 <td>Large</td>
 <td>✔</td>
 </tr>
-<tr class="odd">
+<tr>
 <td></td>
 <td></td>
 <td></td>
@@ -447,7 +447,7 @@ specify priors :</p>
 <h4>Further reading</h4>
 <ol style="list-style-type: decimal">
 <li><p>Description of the CoPheScan method:</p>
-<p><a href="https://doi.org/10.1101/2023.06.29.546856">CoPheScan:
+<p><a href="https://doi.org/10.1038/s41467-024-49990-8">CoPheScan:
 phenome-wide association studies accounting for linkage
 disequilibrium</a></p></li>
 <li><p>coloc: <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1004383">Giambartolomei

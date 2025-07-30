@@ -1,6 +1,10 @@
+## cophescan 1.4.2
+- Fixed cross-references for documentation
+- Fixed formatting of messages
+
 ## cophescan 1.4.1
 
--   Corrected cophe.susie input to accept only query trait datasets.
+-   Corrected cophe.susie input to accept only query trait datasets
 
 ## cophescan 1.4.0
 
@@ -15,8 +19,8 @@
 
 ## cophescan 1.3.1
 
--   Changed plotting functions where querytrait and query_trait_names are now required arguments instead of optional in `prepare_plot_data`, `get_beta`, `cophe_plot`, `cophe_heatmap`.
--   reset global user parameters after running vignettes.
+-   Changed plotting functions where querytrait and query_trait_names are now required arguments instead of optional in `prepare_plot_data`, `get_beta`, `cophe_plot`, `cophe_heatmap`
+-   reset global user parameters after running vignettes
 -   Updated vignettes
 
 ## cophescan 1.3.0
@@ -42,6 +46,6 @@
 ## cophescan 0.1.0
 
 -   Github version
--   Added a `NEWS.md` file to track changes to the package.
+-   Added a `NEWS.md` file to track changes to the package
 
 ------------------------------------------------------------------------

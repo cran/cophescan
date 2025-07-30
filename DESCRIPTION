@@ -1,13 +1,13 @@
 Package: cophescan
 Title: Adaptation of the Coloc Method for PheWAS
-Version: 1.4.1
+Version: 1.4.2
 Authors@R: c(person("Ichcha", "Manipur", role=c("aut","cre"),
     email = "im504@cam.ac.uk"),
     person("Chris", "Wallace", role=c("aut")))
 Maintainer: Ichcha Manipur <im504@cam.ac.uk>
 Description: 
      A Bayesian method for Phenome-wide association studies (PheWAS) that identifies causal associations between genetic variants and traits, while simultaneously addressing confounding due to linkage disequilibrium. For details see   
-     Manipur et al (2023) <doi:10.1101/2023.06.29.546856>.
+     Manipur et al (2024, Nature Communications) <doi:10.1038/s41467-024-49990-8>.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -28,8 +28,8 @@ LinkingTo: Rcpp, RcppArmadillo
 Config/testthat/edition: 3
 ByteCompile: true
 NeedsCompilation: yes
-Packaged: 2024-06-11 14:52:08 UTC; ichcha
+Packaged: 2025-07-30 15:56:21 UTC; ichcha
 Author: Ichcha Manipur [aut, cre],
   Chris Wallace [aut]
 Repository: CRAN
-Date/Publication: 2024-06-11 15:20:20 UTC
+Date/Publication: 2025-07-30 20:00:02 UTC
