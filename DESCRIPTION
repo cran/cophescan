@@ -1,6 +1,6 @@
 Package: cophescan
 Title: Adaptation of the Coloc Method for PheWAS
-Version: 1.4.2
+Version: 1.4.3
 Authors@R: c(person("Ichcha", "Manipur", role=c("aut","cre"),
     email = "im504@cam.ac.uk"),
     person("Chris", "Wallace", role=c("aut")))
@@ -12,7 +12,7 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 VignetteBuilder: knitr
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 Depends: R (>= 3.5.0)
 URL: https://github.com/ichcha-m/cophescan,
         https://ichcha-m.github.io/cophescan/
@@ -28,8 +28,8 @@ LinkingTo: Rcpp, RcppArmadillo
 Config/testthat/edition: 3
 ByteCompile: true
 NeedsCompilation: yes
-Packaged: 2025-07-30 15:56:21 UTC; ichcha
+Packaged: 2026-03-18 14:21:54 UTC; im504
 Author: Ichcha Manipur [aut, cre],
   Chris Wallace [aut]
 Repository: CRAN
-Date/Publication: 2025-07-30 20:00:02 UTC
+Date/Publication: 2026-03-18 15:00:03 UTC

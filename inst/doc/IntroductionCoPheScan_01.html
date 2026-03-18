@@ -12,7 +12,7 @@
 
 <meta name="author" content="Ichcha Manipur" />
 
-<meta name="date" content="2025-07-30" />
+<meta name="date" content="2026-03-18" />
 
 <title>Introduction to CoPheScan</title>
 
@@ -50,8 +50,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -62,7 +63,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -340,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Introduction to CoPheScan</h1>
 <h4 class="author">Ichcha Manipur</h4>
-<h4 class="date">2025-07-30</h4>
+<h4 class="date">2026-03-18</h4>
 
 
 
@@ -376,7 +377,7 @@ of dataset.</p>
 <col width="21%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th></th>
 <th>Single causal variant</th>
 <th>Multiple causal variants</th>
@@ -384,19 +385,19 @@ of dataset.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>ABF</td>
 <td>✔</td>
 <td>x</td>
 <td>No</td>
 </tr>
-<tr>
+<tr class="even">
 <td>SuSIE</td>
 <td>✔</td>
 <td>✔</td>
 <td>Yes</td>
 </tr>
-<tr>
+<tr class="odd">
 <td></td>
 <td></td>
 <td></td>
@@ -404,31 +405,31 @@ of dataset.</p>
 </tr>
 </tbody>
 </table>
-<p>Whenever, LD matrices are available (preferably in-sample LD),
-`<code>cophe.susie</code>` is the recommended method as it accounts for
+<p>Whenever LD matrices are available (preferably in-sample LD),
+<code>cophe.susie</code> is the recommended method as it accounts for
 multiple causal variants in the tested region.</p>
 <p>Next, depending upon the size of the dataset we choose the method to
-specify priors :</p>
+specify priors:</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th></th>
 <th>Dataset</th>
 <th>Inclusion of covariates</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Fixed priors</td>
 <td>Small</td>
 <td>-</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Hierarchical priors</td>
 <td>Large</td>
 <td>✔</td>
 </tr>
-<tr>
+<tr class="odd">
 <td></td>
 <td></td>
 <td></td>

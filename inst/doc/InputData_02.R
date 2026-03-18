@@ -1,8 +1,8 @@
 ## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "Input-"
+	collapse = TRUE,
+	comment = "#>",
+	fig.path = "Input-"
 )
 
 ## ----warning=FALSE, message=FALSE---------------------------------------------
